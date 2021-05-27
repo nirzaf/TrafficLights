@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp5.0</TargetFramework>
+        <AssemblyName>BlazorExamples</AssemblyName>
+        <RootNamespace>BlazorExamples</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Blazored.LocalStorage" Version="2.1.1" />
+      <PackageReference Include="Markdig" Version="0.18.1" />
+    </ItemGroup>
+
+</Project>

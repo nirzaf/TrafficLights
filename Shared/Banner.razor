@@ -1,0 +1,36 @@
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+@if (_visible)
+{
+    <div class="col-md-12 banner">
+        <button @onclick="@Dismiss" class="float-right btn">x</button>
+        A very important message
+    </div>
+}
+
+@code {
+
+    private bool _visible = false;
+
+    private async Task Dismiss()
+    {
+        _visible = false;
+        await localStorage.SetItemAsync("bannerDismissed", true);
+    }
+
+    protected override bool ShouldRender()
+    {
+        var shouldRender = base.ShouldRender();
+        return shouldRender;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _visible = !await localStorage.GetItemAsync<bool>("bannerDismissed");
+            StateHasChanged();
+        }
+    }
+
+}
